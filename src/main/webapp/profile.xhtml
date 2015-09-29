@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/layout/template.xhtml">
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam  name="userId" value="#{customerProfileViewBean.selectedID}"/>
+            <f:viewAction action="#{customerProfileViewBean.onLoad()}" />
+        </f:metadata>
+        <h1>User Profile</h1>
+        <fieldset>
+            <legend>Profile of User with ID: #{customerProfileViewBean.selectedCustomer.id}</legend>
+            <div class="control-group">
+                <label class="control-label" for="field-first-name">First Name:</label>
+                <div class="controls">
+                    <h:outputText id="field-first-name" value="#{customerProfileViewBean.selectedCustomer.firstName}"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="field-last-name">Last Name:</label>
+                <div class="controls">
+                    <h:outputText id="field-last-name" value="#{customerProfileViewBean.selectedCustomer.lastName}"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="field-team-name">Team Name:</label>
+                <div class="controls">
+                    <h:outputText id="field-team-name" value="#{customerProfileViewBean.selectedCustomer.workingTeam.name}"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="field-email">Email:</label>
+                <div class="controls">
+                    <h:outputText id="field-email" value="#{customerProfileViewBean.selectedCustomer.email}"/>
+                </div>
+            </div>
+        </fieldset>
+    </ui:define>
+</ui:composition>
+

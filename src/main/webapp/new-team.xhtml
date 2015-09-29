@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/layout/template.xhtml">
+    <ui:define name="content">
+        <h1>Create a new Team!</h1>
+
+        <h:form id="createTeamForm" styleClass="form-horizontal">
+            <fieldset>
+                <legend>Enter Team Information</legend>
+
+                <div class="control-group">
+                    <label class="control-label" for="field-team-name">Name</label>
+                    <div class="controls">
+                        <h:inputText id="field-team-name" tabindex="1" maxlength="45" value="#{createNewWorkingTeamBean.newWorkingTeam.name}" pt:placeholder="Team Name"/>
+                    </div>
+                </div>
+                <h:commandButton type="submit" styleClass="btn btn-primary" action="#{createNewWorkingTeamBean.createNewWorkingTeam()}" value="Create Team"/>
+                <h:commandButton type="reset" styleClass="btn" value="Cancel"/>
+            </fieldset>
+        </h:form>
+    </ui:define>
+</ui:composition>
+

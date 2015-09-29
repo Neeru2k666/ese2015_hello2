@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/layout/template.xhtml">
+    <ui:define name="content">
+        <h1>Sign Up Here!</h1>
+
+        <h:form id="signupForm" styleClass="form-horizontal">
+            <fieldset>
+                <legend>Enter Your Information</legend>
+
+                <div class="control-group">
+                    <label class="control-label" for="field-email">Email</label>
+                    <div class="controls">
+                        <h:inputText id="field-email" tabindex="1" maxlength="45" value="#{registrationBean.newCustomer.email}" pt:placeholder="Email"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="field-firstName">First Name</label>
+                    <div class="controls">
+                        <h:inputText id="field-firstName" tabindex="2" maxlength="35" value="#{registrationBean.newCustomer.firstName}" pt:placeholder="First Name"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="field-lastName">Last Name</label>
+                    <div class="controls">
+                        <h:inputText id="field-lastName" tabindex="3" maxlength="35" value="#{registrationBean.newCustomer.lastName}" pt:placeholder="Last Name"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="field-team">Working Team</label>
+                    <div class="controls">
+                        <h:selectOneMenu id="field-team" tabindex="4" value="#{registrationBean.newCustomer.workingTeam}" converter="#{workingTeamConverter}">
+                            <f:selectItems value="#{registrationBean.availableTeams}" var="team" itemLabel="#{team.name}"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <h:commandButton type="submit" styleClass="btn btn-primary" action="#{registrationBean.registerCustomer()}" value="Sign Up"/>
+                    <h:commandButton type="reset" styleClass="btn" value="Cancel"/>
+                </div>
+            </fieldset>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
